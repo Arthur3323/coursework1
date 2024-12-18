@@ -21,21 +21,6 @@ public class Employee {
         return fullName;
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return department == employee.department && salary == employee.salary && Objects.equals(fullName, employee.fullName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(fullName, department, salary);
-    }
-
-
     public int getDepartment() {
         return department;
     }
@@ -54,9 +39,23 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "id=" + id  +
+        return "id=" + id +
                 " fullName='" + fullName + "\'" +
                 ", department=" + department +
                 ", salary=" + salary;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return department == employee.department && salary == employee.salary && Objects.equals(fullName, employee.fullName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, department, salary);
+    }
+
 }

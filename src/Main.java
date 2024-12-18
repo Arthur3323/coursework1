@@ -1,6 +1,16 @@
 import java.util.Random;
 
 public class Main {
+    public static void main(String[] args) {
+        initEmployees();
+        printStaff();
+        System.out.println("Сумма ЗП всех сотрудников: " + sumSalary());
+        System.out.println("Минимальная ЗП у сотрудника: " + minSalary());
+        System.out.println("Максимальая ЗП у сотрудника: " + maxSalary());
+        System.out.println("Средняя ЗП всех сотрудников: " + averageSalary());
+        printFullName();
+        indexSalary();
+    }
 
     private final static Random RANDOM = new Random();
 
@@ -17,17 +27,6 @@ public class Main {
         }
     }
 
-
-    public static void main(String[] args) {
-        initEmployees();
-        printStaff();
-        System.out.println("Сумма ЗП всех сотрудников: " + sumSalary());
-        System.out.println("Минимальная ЗП у сотрудника: " + minSalary());
-        System.out.println("Максимальая ЗП у сотрудника: " + maxSalary());
-        System.out.println("Средняя ЗП всех сотрудников: " + averageSalary());
-        printFullName();
-    }
-
     private static void printStaff() {
         for (Employee employee : EMPLOYEES) {
             System.out.println(employee);
@@ -41,7 +40,6 @@ public class Main {
         }
         return sum;
     }
-
 
     private static Employee minSalary() {
         Employee nameMin = EMPLOYEES[0];
@@ -64,7 +62,7 @@ public class Main {
     }
 
     private static double averageSalary() {
-        return (double) sumSalary()  / EMPLOYEES.length;
+        return (double) sumSalary() / EMPLOYEES.length;
     }
 
     private static void printFullName() {
@@ -73,7 +71,15 @@ public class Main {
         }
     }
 
-
+    private static void indexSalary() {
+        double percent = 10;
+        double index = percent / 100;
+        for (Employee employee : EMPLOYEES) {
+            double changedSalary = employee.getSalary() + employee.getSalary() * index;
+            employee.setSalary((int) changedSalary);
+            System.out.println(employee);
+        }
+    }
 
 }
 
